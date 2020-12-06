@@ -25,6 +25,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     private productService: ProductService) {}
 
   async ngOnInit(): Promise<void> {
+    // Gettinh Products
     this.subscriptionP = this.productService.getAll().snapshotChanges()
     .subscribe(products => {
       this.filteredProducts = this.products = products.map(
@@ -40,6 +41,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       );
     });
 
+    // Filtering the Products
     this.route.queryParamMap.subscribe(params => {
 
       this.categoryName = params.get('category');
@@ -49,6 +51,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     });
 
+    // Getting Shopping cart
     this.subscriptionC = (await this.cartService.getCart())
     .subscribe(cart => {
       this.cart = cart;

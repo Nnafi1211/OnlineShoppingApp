@@ -1,14 +1,14 @@
-import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ShoppingCart } from '../models/shopping-cart';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 
 @Component({
-  selector: 'app-product-card',
-  templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css']
+  selector: 'app-product-quantity',
+  templateUrl: './product-quantity.component.html',
+  styleUrls: ['./product-quantity.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class ProductQuantityComponent implements OnInit {
 
   // tslint:disable-next-line: no-input-rename
   @Input('product') product: Product;
@@ -24,6 +24,10 @@ export class ProductCardComponent implements OnInit {
 
   addToCart() {
   this.cartService.addtoCart(this.product);
+  }
+
+  removeFromCart() {
+    this.cartService.removeFromCart(this.product);
   }
 
 }

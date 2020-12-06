@@ -12,12 +12,6 @@ export class ShoppingCartService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  private create() {
-    return this.db.list('/shopping-carts').push({
-      dateCreated: new Date().getTime()
-    });
-  }
-
   async getCart(): Promise<Observable<ShoppingCart>> {
     let cartId = await this.getOrCreateCartId();
 
@@ -28,6 +22,25 @@ export class ShoppingCartService {
         return new ShoppingCart(items);
       })
     );
+  }
+
+  async addtoCart(product: Product) {
+    this.updateItem(product, 1);
+  }
+
+  async removeFromCart(product: Product) {
+    this.updateItem(product, -1);
+  }
+
+  async clearCart() {
+    let cartId = await this.getOrCreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
+  private create() {
+    return this.db.list('/shopping-carts').push({
+      dateCreated: new Date().getTime()
+    });
   }
 
   private getItem(cartId: string, productKey: string) {
@@ -48,25 +61,35 @@ export class ShoppingCartService {
 
   }
 
-  private async updateItemQuantity(product: Product, change: number) {
+  private async updateItem(product: Product, change: number) {
     let cartId = await this.getOrCreateCartId();
     let item$ = this.getItem(cartId, product.key);
 
     item$.snapshotChanges().pipe(take(1)).subscribe((item: any) => {
       if (item.payload.val()) {
-        item$.update({ quantity: item.payload.val().quantity + change });
+
+        let quantityVal= item.payload.val().quantity + change;
+
+        if (quantityVal === 0) {
+          return item$.remove();
+        }
+
+        item$.update({
+          title: product.title,
+          price: product.price,
+          imageUrl: product.imageUrl,
+          quantity: quantityVal
+        });
       }
       else{
-        item$.set({ product: product, quantity: 1 });
+        item$.set({
+            title: product.title,
+            price: product.price,
+            imageUrl: product.imageUrl,
+            quantity: 1
+          });
       }
     });
   }
 
-  async addtoCart(product: Product) {
-    this.updateItemQuantity(product, 1);
-  }
-
-  async removeFromCart(product: Product) {
-    this.updateItemQuantity(product, -1);
-  }
 }
