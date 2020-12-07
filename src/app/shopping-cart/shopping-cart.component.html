@@ -52,11 +52,23 @@
 
     </table>
 
-    <button 
-    (click)="clearCart()"
-    class="btn btn-danger btn-sm"
-    >
-        Clear Shopping Cart
-    </button>
+    <div class="form-group col-12">
+        
+        <button 
+        (click)="clearCart()"
+        *ngIf="cart.totalItemsCount"
+        class="btn btn-danger btn-sm">
+            Clear Shopping Cart
+        </button>
+
+        <button
+        *ngIf="cart.totalItemsCount"
+        routerLink="/check-out"
+        class="float-right btn btn-primary btn-sm">
+            Check out
+        </button>
+        
+    </div>
+   
 </div>
 
