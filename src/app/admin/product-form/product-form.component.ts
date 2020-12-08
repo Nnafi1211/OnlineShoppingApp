@@ -1,7 +1,7 @@
-import { Product } from './../../models/product';
-import { ProductService } from './../../services/product.service';
+import { Product } from '../../models/product';
+import { ProductService } from '../../services/product.service';
 import { Observable, Subscription } from 'rxjs';
-import { CatagoryService } from './../../services/catagory.service';
+import { CatagoryService } from '../../services/catagory.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';

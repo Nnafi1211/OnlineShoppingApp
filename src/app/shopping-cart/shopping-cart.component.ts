@@ -1,6 +1,6 @@
-import { Product } from './../models/product';
+import { Product } from '../models/product';
 import { Observable } from 'rxjs';
-import { ShoppingCartService } from './../services/shopping-cart.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCart } from '../models/shopping-cart';
 

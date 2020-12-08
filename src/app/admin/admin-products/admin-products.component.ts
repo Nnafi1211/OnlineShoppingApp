@@ -1,9 +1,9 @@
-import { Product } from './../../models/product';
+import { Product } from '../../models/product';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { ProductService } from './../../services/product.service';
+import { ProductService } from '../../services/product.service';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 @Component({

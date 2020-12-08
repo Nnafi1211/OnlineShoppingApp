@@ -1,4 +1,4 @@
-import { ShoppingCart } from './../models/shopping-cart';
+import { ShoppingCart } from '../models/shopping-cart';
 import { take, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';

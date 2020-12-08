@@ -1,11 +1,11 @@
 import { Router } from '@angular/router';
-import { Order } from './../models/order';
-import { AuthService } from './../services/auth.service';
-import { OrderService } from './../services/order.service';
+import { Order } from '../models/order';
+import { AuthService } from '../services/auth.service';
+import { OrderService } from '../services/order.service';
 import { Subscription } from 'rxjs';
-import { ShoppingCart } from './../models/shopping-cart';
-import { ShoppingCartService } from './../services/shopping-cart.service';
-import { Shipping } from './../models/shipping';
+import { ShoppingCart } from '../models/shopping-cart';
+import { ShoppingCartService } from '../services/shopping-cart.service';
+import { Shipping } from '../models/shipping';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({

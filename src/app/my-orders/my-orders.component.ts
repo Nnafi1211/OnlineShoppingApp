@@ -1,8 +1,8 @@
-import { Order } from './../models/order';
-import { AppUser } from './../models/app.user';
+import { Order } from '../models/order';
+import { AppUser } from '../models/app.user';
 import { switchMap, map } from 'rxjs/operators';
-import { OrderService } from './../services/order.service';
-import { AuthService } from './../services/auth.service';
+import { OrderService } from '../services/order.service';
+import { AuthService } from '../services/auth.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 

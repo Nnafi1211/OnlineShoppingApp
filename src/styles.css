@@ -1,5 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root{
+    --clr-color-1: purple;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
+    color: var(--clr-color-1);
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: var(--clr-color-1);
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    color: var(--clr-color-1);
+}
+
+.list-group-item.active{
+    background-color: var(--clr-color-1);
+    border-color: var(--clr-color-1);
+}
